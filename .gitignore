@@ -260,3 +260,5 @@ Tools/scripts/var_access_benchmark.py
 /dataset
 Scripts/nltk-script.py
 Scripts/tqdm-script.py
+Scripts/sqlformat-script.py
+Scripts/django-admin-script.py
