@@ -1,0 +1,5 @@
+<form method="POST">
+    {% csrf_token %}
+    <textarea name="review" rows="4" cols="50" placeholder="Enter your review"></textarea><br>
+    <button type="submit">Classify Review</button>
+</form>

@@ -5,7 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 import joblib
-
+import os
 import re
 # Create your views here.
 
@@ -14,7 +14,7 @@ vectorizer = joblib.load('classifier/models/rf_vectorizer.joblib')
 
 stop_words = set(stopwords.words('english'))
 
-stemmer = snowball.SnowballStemmer('english')
+stemmer = SnowballStemmer('english')
 
 def preprocess(text):
     text = re.sub(r'<.*?>', '', text)
@@ -26,22 +26,23 @@ def preprocess(text):
     return text
 
 def classify_review(request):
+    print(os.getcwd())
     if request.method =='POST':
         review = preprocess(request.POST.get('review')) # Извлекли текст ревью из POST запроса и предобработали
         transformed_review = vectorizer.transform([review]) # Векторизация переданного текста 
         pred = model.predict(transformed_review)
         probs = model.predict_proba(transformed_review)
 
-        negative_prob, positive_prob = probs[0], probs[1]
+        negative_prob, positive_prob = probs[0][0], probs[0][1]
 
-        rating =  5 + 5*positive_prob if pred == 1 else 5 * (1 - negative_prob)
+        rating =  5 + 5*positive_prob if pred[0] == 1 else 5 * (1 - negative_prob)
         
         result = {
-            'prediction': 'positive' if pred == 1 else 'negative',
+            'prediction': 'positive' if pred[0] == 1 else 'negative',
             'rating' : round(rating, 1) 
         }
         return JsonResponse(result)
-    return render(request, 'classifier/templates/classify_review.html')
+    return render(request, 'classifier/classify_review.html')
         
 
 

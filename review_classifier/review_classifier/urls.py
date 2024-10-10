@@ -16,7 +16,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.shortcuts import redirect
+from classifier import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('classify/', views.classify_review, name='classify_review'),
+    path('', lambda request: redirect('classify_review')),  # Перенаправляем корневой URL на classify_review
 ]
