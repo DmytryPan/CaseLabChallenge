@@ -41,7 +41,7 @@ def classify_review(request):
             'rating' : round(rating, 1) 
         }
         return JsonResponse(result)
-    return render(request, 'classifier/classify_review.html')
+    return render(request, 'classifier/templates/classify_review.html')
         
 
 
