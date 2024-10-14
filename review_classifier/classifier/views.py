@@ -11,7 +11,7 @@ import re
 
 model = joblib.load('classifier/models/RandomForestClassifier.joblib')
 vectorizer = joblib.load('classifier/models/rf_vectorizer.joblib')
-
+nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
 stemmer = SnowballStemmer('english')
