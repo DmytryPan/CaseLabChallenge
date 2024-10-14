@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
+import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
