@@ -6,3 +6,4 @@ scikit_learn==1.5.2
 numpy==1.26.4
 regex==2024.9.11
 pandas==2.2.2
+whitenoise==6.7.0
