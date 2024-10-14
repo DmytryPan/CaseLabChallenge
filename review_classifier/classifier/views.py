@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
+nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 import joblib
@@ -11,7 +12,6 @@ import re
 
 model = joblib.load('classifier/models/RandomForestClassifier.joblib')
 vectorizer = joblib.load('classifier/models/rf_vectorizer.joblib')
-nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
 stemmer = SnowballStemmer('english')
