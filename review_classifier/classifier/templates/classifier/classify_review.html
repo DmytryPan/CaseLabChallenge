@@ -43,14 +43,14 @@
 <body>
     <div class="container">
         <div class="card shadow">
-            <h3 class="text-center">Классификатор рецензий на фильмы</h3>
-            <p class="text-center">Введите вашу рецензию на английском языке, а мы определим, хвалите ли вы фильм или нет.</p>
+            <h3 class="text-center">Movie review classifier</h3>
+            <p class="text-center">Enter your review in English, and we will determine whether you praise the film or not.</p>
             <form id="reviewForm">
                 <div class="mb-3">
-                    <label for="review" class="form-label">Ваша рецензия:</label>
+                    <label for="review" class="form-label">Your review:</label>
                     <textarea class="form-control" id="review" rows="4" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-custom">Классифицировать</button>
+                <button type="submit" class="btn btn-custom">Classify</button>
                 <div class="loader" id="loader"></div>
             </form>
             <div class="response" id="response"></div>
